@@ -15,7 +15,8 @@ phases:
   post_build:
     commands:
       - echo "post_build step"
+      - dotnet publish -o dist
 artifacts:
   files:
     - '**/*'
-  base-directory: 'src/DemoApi'
+  base-directory: 'src/DemoApi/dist'
