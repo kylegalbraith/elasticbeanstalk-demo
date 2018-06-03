@@ -2,7 +2,9 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm install -g serverless
+      - echo "install command"
+      - cd src
+      - dotnet restore
   pre_build:
     commands:
       - echo "pre_build step"
@@ -10,7 +12,7 @@ phases:
     commands:
       - echo "build command"
       - cd src
-      - serverless deploy -v
+      - dotnet build
   post_build:
     commands:
       - echo "post_build step"
