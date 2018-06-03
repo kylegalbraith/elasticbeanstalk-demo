@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DemoApi.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoApi.Controllers
@@ -9,36 +10,37 @@ namespace DemoApi.Controllers
     [Route("api/[controller]")]
     public class DemosController : ControllerBase
     {
+        private IDemoRepository _demoRepository;
+
+        public DemosController(IDemoRepository demoRepository)
+        {
+            _demoRepository = demoRepository;
+        }
+
         // GET api/demo
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<DemoModel> Get()
         {
-            return new string[] { "Demo3", "Demo4" };
+            return _demoRepository.GetAllDemos();
         }
 
         // GET api/demos/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public DemoModel Get(int id)
         {
-            return $"This is demo {id}";
+            return _demoRepository.GetDemo(id);
         }
 
-        // POST api/values
+        // POST api/demos
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]NewDemoModel model)
         {
+            _demoRepository.AddDemo(model.Name);
         }
+    }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+    public class NewDemoModel
+    {
+        public string Name { get; set; }
     }
 }
