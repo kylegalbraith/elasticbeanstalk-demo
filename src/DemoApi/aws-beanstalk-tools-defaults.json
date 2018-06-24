@@ -4,7 +4,7 @@
     "profile" : "default",
     "region"  : "us-west-2",
     "application" : "DemoApi",
-    "environment" : "demoapi-best",
+    "environment" : "demoapi-load-balanced",
     "cname"       : "demoapi-test",
     "solution-stack" : "64bit Windows Server 2012 R2 v1.2.0 running IIS 8.5",
     "environment-type" : "SingleInstance",
