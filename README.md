@@ -1,2 +1,2 @@
 # elasticbeanstalk-demo
-Demo .NET Core Web API to accompany this following blog post: [dev](dev.to)
+Demo .NET Core Web API to accompany a future blog post that explores deploying a `dotnet` core Web API to AWS.
